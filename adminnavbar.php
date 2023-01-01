@@ -10,7 +10,7 @@
           <a class="nav-link" aria-current="page" href="browse.php">View Services</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Add Service</a>
+          <a class="nav-link" href="addservice.php">Add Service</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Remove Service</a>
