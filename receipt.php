@@ -58,7 +58,7 @@ try {
 
         echo "Service time slot: " . $row2['TIME_SLOT_START'] . "-" . $row2['TIME_SLOT_END'] . "<br/>";
         echo "Service name: " . $row3['NAME'] . "<br/>";
-        echo "Service price: " . $row3['PRICE'] . "<br/>";
+        echo "Service price: BHD " . $row3['PRICE'] . "<br/>";
         echo "Service rating: " . $row3['RATING'] . "/5" . "<br/>";
       }
       ?>

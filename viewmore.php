@@ -98,10 +98,23 @@ try {
           </table>
         </div>
         <div class="container-xl text-center">
-          <form method='get' action='viewavailabilities.php'>
-            <input type='hidden' name='id' value='<?php echo $row["ID"]; ?>' />
-            <input type='submit' name='book' class="btn btn-primary" value='Check Availabilities' />
-          </form>
+          <?php
+          if ($_SESSION['userType'] == 'customer') {
+          ?>
+            <form method='get' action='viewavailabilities.php'>
+              <input type='hidden' name='id' value='<?php echo $row["ID"]; ?>' />
+              <input type='submit' name='book' class="btn btn-primary mt-3" value='Check Availabilities' />
+            </form>
+          <?php
+          } elseif ($_SESSION['userType'] == 'admin') {
+          ?>
+            <form method='get' action='removeService.php'>
+              <input type='hidden' name='id' value='<?php echo $row["ID"]; ?>' />
+              <input type='submit' name='remove' class="btn btn-danger mt-3" value='Remove Item' />
+            </form>
+          <?php
+          }
+          ?>
         </div>
     <?php
       }

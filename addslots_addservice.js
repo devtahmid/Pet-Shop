@@ -2,13 +2,24 @@ var currentSlotIndex = 1;
 function addSlot(e) {
   currentSlotIndex += 1;
   var divSlot = document.createElement('div');
-
+  console.log(divSlot);
   var labelStartTime = document.createElement('label');
   labelStartTime.htmlFor = currentSlotIndex + "#time1";
-  labelStartTime.innerText = "Start Time";
+  labelStartTime.innerText = "Start Time : ";
+  var startTimeInput = document.createElement('input');
+  startTimeInput.type = "time";
+  startTimeInput.id = currentSlotIndex + "#time1";
+  startTimeInput.name = "TIME[]";
+  startTimeInput.required = true;
+
   var labelEndTime = document.createElement('label');
   labelEndTime.htmlFor = currentSlotIndex + "#time2"; //copilot
-  labelEndTime.innerText = "End Time";  //copilot
+  labelEndTime.innerText = "End Time : ";  //copilot
+  var endTimeInput = document.createElement('input');
+  endTimeInput.type = "time";
+  endTimeInput.id = currentSlotIndex + "#time2";
+  endTimeInput.name = "TIME[]";
+  endTimeInput.required = true;
 
   var h4 = document.createElement('h4');
   h4.innerText = "Select days of the week (atleast one required):";
@@ -63,21 +74,34 @@ function addSlot(e) {
   chheckbox5label.htmlFor = currentSlotIndex + "#thursday";
   chheckbox5label.innerText = "Thursday";
 
+  var tabspace = document.createElement('span');
+  tabspace.innerHTML = "&emsp;";
+
   divSlot.appendChild(labelStartTime);
+  divSlot.appendChild(startTimeInput);
+  divSlot.appendChild(tabspace)
   divSlot.appendChild(labelEndTime);
+  divSlot.appendChild(endTimeInput);
   divSlot.appendChild(h4);
+
   divSlot.appendChild(checkbox1);
   divSlot.appendChild(chheckbox1label);
+  divSlot.appendChild(tabspace)
   divSlot.appendChild(checkbox2);
   divSlot.appendChild(chheckbox2label);
+  divSlot.appendChild(tabspace)
   divSlot.appendChild(checkbox3);
   divSlot.appendChild(chheckbox3label);
+  divSlot.appendChild(tabspace)
   divSlot.appendChild(checkbox4);
   divSlot.appendChild(chheckbox4label);
+  divSlot.appendChild(tabspace)
   divSlot.appendChild(checkbox5);
   divSlot.appendChild(chheckbox5label);
 
-  console.log(divSlot);
+  document.getElementById('slots').appendChild(divSlot);
+  var br = document.createElement('br');
+  document.getElementById('slots').appendChild(br);
 }
 
-document.getElementById('slots').addEventListener('click', addSlot);
+document.getElementById('addSlotButton').addEventListener('click', addSlot);

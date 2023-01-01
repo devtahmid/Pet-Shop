@@ -7,7 +7,7 @@ if (isset($create)) {
   $insertId = 0;
   try {
     $db->beginTransaction();
-    $sql = "insert into services (NAME, PRICE, PICTURE) values (:NAME, :PRICE, :PICTURE)";
+    $sql = "insert into services (NAME, PRICE, PICTURE, SERVICE_ACTIVE) values (:NAME, :PRICE, :PICTURE , 1)";
     $preparestatement = $db->prepare($sql);
 
     foreach ($_FILES["imagefile"]["name"] as $key => $val) {
@@ -65,8 +65,9 @@ if (isset($create)) {
     foreach ($DAY as $value) {
       $valueExploded = explode("#", $value);
       if ($valueExploded[0] != $index) {
-        $timeStart = $TIME[(int)$index * 2];
-        $timeEnd = $TIME[((int)$index * 2) + 1];
+        $timeStart = $TIME[((int)$index - 1) * 2];
+        $timeEnd = $TIME[(((int)$index - 1) * 2) + 1];
+        echo $timeStart . "@@@" . $timeEnd;
         $preparedStatement2->execute(['SERVICES_ID' => $insertId, 'TIME_SLOT_START' => $timeStart, 'TIME_SLOT_END' => $timeEnd, 'SUNDAY' => $SUNDAY, 'MONDAY' => $MONDAY, 'TUESDAY' => $TUESDAY, 'WEDNESDAY' => $WEDNESDAY, 'THURSDAY' => $THURSDAY]);
         $SUNDAY = $MONDAY = $TUESDAY = $WEDNESDAY = $THURSDAY = 0;
         $index = $valueExploded[0];
@@ -100,8 +101,7 @@ if (isset($create)) {
     die("Error Message" . $ex->getMessage());
   }
 
-  die();
-  //header("Location: viewmore.php?id=" . $insertId);
+  header("Location: viewmore.php?id=" . $insertId);
 }
 
 ?>
@@ -114,6 +114,7 @@ if (isset($create)) {
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <title>Add Service</title>
   <link href="./assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -156,29 +157,29 @@ if (isset($create)) {
           </div>
         </table>
 
-        <!-- radio button to select a day of the week -->
+
         <div id="slots">
           <div>
             <h4>Time Slot</h4>
             <label for="1#time1">Start time :</label>
             <input type="time" name="TIME[]" id="1#time1" required>
-
+            &emsp;
             <label for="1#time2">End time :</label>
             <input type="time" name="TIME[]" id="1#time2" required>
 
             <h4>Select days of the week (atleast one required):</h4>
             <input type="checkbox" id="1#sunday" name="DAY[]" value="1#SUNDAY" checked>
             <label for="1#sunday">Sunday</label>
-
+            &emsp;
             <input type="checkbox" id="1#monday" name="DAY[]" value="1#MONDAY">
             <label for="1#monday">Monday</label>
-
+            &emsp;
             <input type="checkbox" id="1#tuesday" name="DAY[]" value="1#TUESDAY">
             <label for="1#tuesday">Tuesday</label>
-
+            &emsp;
             <input type="checkbox" id="1#wednesday" name="DAY[]" value="1#WEDNESDAY">
             <label for="1#wednesday">Wednesday</label>
-
+            &emsp;
             <input type="checkbox" id="1#thursday" name="DAY[]" value="1#THURSDAY">
             <label for="1#thursday">Thursday</label>
 
@@ -187,7 +188,7 @@ if (isset($create)) {
 
 
         </div> <!-- end of div.slots -->
-        <input type='button' id='addSlotButton' class="btn btn-outline-primary" value="Add Time Slot">
+        <input type='button' id='addSlotButton' class="btn btn-outline-primary mb-2" value="Add Time Slot">
         <div class="form-group">
           <input class='btn btn-secondary btn-lg btn-block' type='submit' name='create' value='Add' />
         </div>

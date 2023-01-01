@@ -6,7 +6,7 @@ if (!isset($_SESSION['userId']))
   header('location:../login_form.php');
 
 try {
-  $sql = "SELECT * FROM SERVICES";
+  $sql = "SELECT * FROM SERVICES WHERE SERVICE_ACTIVE = 1";
   $result = $db->query($sql);
 
   $db = null;
@@ -31,11 +31,11 @@ try {
 <body>
 
   <?php
-  if ($_SESSION['userType'] == 'admin') {
+  if ($_SESSION['userType'] == 'admin')
     require('adminnavbar.php');
-  } /* else if(){
-}
- */
+  else if ($_SESSION['userType'] == 'customer')
+    require('customernavbar.php');
+
   ?>
   <br /><br /><br />
 
