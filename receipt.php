@@ -1,6 +1,7 @@
 <?php
 //get all details from booking table for the booking id and display it
-require("connection.php");
+session_start();
+require("project_connection.php");
 extract($_GET); //$bookingId
 try {
   $sql = "SELECT * FROM bookings WHERE ID=:id";
@@ -25,13 +26,46 @@ try {
 } catch (PDOException $e) {
   die("Error Message" . $e->getMessage());
 }
+?>
 
-if ($result->rowcount() > 0) {
-  echo "Booking ID: " . $row['ID'] . "<br/>";
-  echo "Booking Date: " . $row['BOOKING_DATE'] . "<br/>";
+<!DOCTYPE html>
+<html lang="en">
 
-  echo "Service time slot: " . $row2['TIME_SLOT_START'] . "-" . $row2['TIME_SLOT_END'] . "<br/>";
-  echo "Service name: " . $row3['NAME'] . "<br/>";
-  echo "Service price: " . $row3['PRICE'] . "<br/>";
-  echo "Service rating: " . $row3['RATING'] . "/5" . "<br/>";
-}
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Receipt</title>
+  <link href="./assets/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+
+<body>
+  <?php
+  if ($_SESSION['userType'] == 'customer') {
+    /*  require('adminnavbar.php'); */
+  }
+  ?>
+  <br /><br /><br />
+
+  <div class="container-xl d-flex justify-content-center flex-column align-items-center">
+    <div class="d-flex justify-content-center flex-column align-items-center border border-secondary border-2 rounded ">
+
+      <?php
+      if ($result->rowcount() > 0) {
+        echo "Booking ID: " . $row['ID'] . "<br/>";
+        echo "Booking Date: " . $row['BOOKING_DATE'] . "<br/>";
+
+        echo "Service time slot: " . $row2['TIME_SLOT_START'] . "-" . $row2['TIME_SLOT_END'] . "<br/>";
+        echo "Service name: " . $row3['NAME'] . "<br/>";
+        echo "Service price: " . $row3['PRICE'] . "<br/>";
+        echo "Service rating: " . $row3['RATING'] . "/5" . "<br/>";
+      }
+      ?>
+
+    </div>
+
+  </div>
+</body>
+
+</html>
