@@ -1,8 +1,12 @@
 <?php
-require("connection.php");
+require("project_connection.php");
 
+session_start();
+if (!isset($_SESSION['userId']))
+  header('location:../login_form.php');
+/* if ($_SESSION['userType'] == 'admin')) {
 
-
+} */
 try {
   $sql = "SELECT * FROM SERVICES";
   $result = $db->query($sql);

@@ -1,6 +1,6 @@
 // get booking data from viewavailabilities.php and insert into bookings table into database
 <?php
-require("connection.php");
+require("project_connection.php");
 extract($_GET); //$id of services_slots , $date
 try {
   $db->beginTransaction();

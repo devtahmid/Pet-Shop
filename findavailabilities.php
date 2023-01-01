@@ -1,12 +1,10 @@
 <?php
-
+//do we need this?
 extract($_GET);
 $currentDate = date('Y-m-d');
 
 if ($date <= $currentDate) {
-die("client side verification by passed");
+  die("client side verification by passed");
 }
 
-require('connection.php');
-
-
+require('project_connection.php');
