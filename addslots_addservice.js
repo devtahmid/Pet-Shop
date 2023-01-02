@@ -79,23 +79,23 @@ function addSlot(e) {
 
   divSlot.appendChild(labelStartTime);
   divSlot.appendChild(startTimeInput);
-  divSlot.appendChild(tabspace)
+  /*   divSlot.appendChild(tabspace) */
   divSlot.appendChild(labelEndTime);
   divSlot.appendChild(endTimeInput);
   divSlot.appendChild(h4);
 
   divSlot.appendChild(checkbox1);
   divSlot.appendChild(chheckbox1label);
-  divSlot.appendChild(tabspace)
+  /*   divSlot.appendChild(tabspace) */
   divSlot.appendChild(checkbox2);
   divSlot.appendChild(chheckbox2label);
-  divSlot.appendChild(tabspace)
+  /*   divSlot.appendChild(tabspace) */
   divSlot.appendChild(checkbox3);
   divSlot.appendChild(chheckbox3label);
-  divSlot.appendChild(tabspace)
+  /*  divSlot.appendChild(tabspace) */
   divSlot.appendChild(checkbox4);
   divSlot.appendChild(chheckbox4label);
-  divSlot.appendChild(tabspace)
+  /* divSlot.appendChild(tabspace) */
   divSlot.appendChild(checkbox5);
   divSlot.appendChild(chheckbox5label);
 

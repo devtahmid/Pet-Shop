@@ -15,7 +15,9 @@
 
     <nav class="navbar navbar-expand-md bg-body-tertiary fixed-top border border-dark-subtle border-top-0 border-end-0 border-start-0">
       <div class="container-fluid">
-        <a class="navbar-brand" href="index.php">Pet Shop</a>
+        <a class="navbar-brand" href="index.php">
+          <img src="./assets/pet_logo1.png" alt="Logo" width="40" height="34" class="d-inline-block">
+          PetPrism</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -51,7 +53,7 @@
           single vet facility servicing pets and rescue animals. PetPrism has developed over the years and currently
           employs two veterinary surgeons, four veterinary technicians, and three highly skilled customer service and
           administrative personnel.</p>
-        <a href="#services" class="btn">Read More</a>
+
       </div>
     </section>
 
@@ -67,19 +69,19 @@
         <div class="box">
           <i class="fas fa-dog"></i>
           <h3>dog boarding</h3>
-          <a href="#" class="btn">read more</a>
+          <a href="login_form.php" class="btn">read more</a>
         </div>
 
         <div class="box">
           <i class="fas fa-cat"></i>
           <h3>cat boarding</h3>
-          <a href="#" class="btn">read more</a>
+          <a href="login_form.php" class="btn">read more</a>
         </div>
 
         <div class="box">
           <i class="fas fa-bath"></i>
           <h3>spa & grooming</h3>
-          <a href="#" class="btn">read more</a>
+          <a href="login_form.php" class="btn">read more</a>
         </div>
       </div>
     </section>

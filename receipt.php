@@ -46,20 +46,21 @@ try {
     require('customernavbar.php');
   }
   ?>
-  <br /><br /><br />
+  <br /><br /><br /> <br /><br /><br />
 
   <div class="container-xl d-flex justify-content-center flex-column align-items-center">
-    <div class="d-flex justify-content-center flex-column align-items-center border border-secondary border-2 rounded ">
 
+    <div class="d-flex justify-content-center flex-column align-items-center border border-secondary border-2 rounded ">
+      <h1>Receipt</h1>
       <?php
       if ($result->rowcount() > 0) {
-        echo "Booking ID: " . $row['ID'] . "<br/>";
-        echo "Booking Date: " . $row['BOOKING_DATE'] . "<br/>";
+        echo "<b>Booking ID: " . $row['ID'] . "</b><br/>";
+        echo "<b>Booking Date: " . $row['BOOKING_DATE'] . "</b><br/>";
 
-        echo "Service time slot: " . $row2['TIME_SLOT_START'] . "-" . $row2['TIME_SLOT_END'] . "<br/>";
-        echo "Service name: " . $row3['NAME'] . "<br/>";
-        echo "Service price: BHD " . $row3['PRICE'] . "<br/>";
-        echo "Service rating: " . $row3['RATING'] . "/5" . "<br/>";
+        echo "<b>Service time slot: " . $row2['TIME_SLOT_START'] . "-" . $row2['TIME_SLOT_END'] . "</b><br/>";
+        echo "<b>Service name: " . $row3['NAME'] . "</b><br/>";
+        echo "<b>Service price: BHD " . $row3['PRICE'] . "</b><br/>";
+        echo "<b>Service rating: " . $row3['RATING'] . "/5" . "</b><br/>";
       }
       ?>
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 02, 2023 at 05:05 PM
+-- Generation Time: Jan 02, 2023 at 07:39 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -43,7 +43,15 @@ CREATE TABLE `bookings` (
 INSERT INTO `bookings` (`ID`, `SERVICES_SLOTS_ID`, `BOOKING_DATE`, `BOOKING_DATETIME`, `SERVICES_ID`, `USER_ID`) VALUES
 (1, 16, '2023-01-05', '0000-00-00 00:00:00', 2, 2),
 (9, 39, '2023-01-01', '0000-00-00 00:00:00', 18, 2),
-(10, 19, '2023-01-09', '0000-00-00 00:00:00', 3, 2);
+(10, 19, '2023-01-09', '0000-00-00 00:00:00', 3, 2),
+(11, 40, '2023-01-03', '0000-00-00 00:00:00', 18, 4),
+(12, 1, '2023-01-04', '0000-00-00 00:00:00', 1, 4),
+(13, 18, '2023-01-05', '0000-00-00 00:00:00', 3, 4),
+(14, 3, '2022-12-29', '0000-00-00 00:00:00', 1, 4),
+(15, 2, '2022-12-28', '0000-00-00 00:00:00', 1, 4),
+(16, 14, '2022-11-23', '0000-00-00 00:00:00', 2, 4),
+(17, 47, '2023-01-01', '0000-00-00 00:00:00', 21, 5),
+(18, 47, '2023-01-01', '0000-00-00 00:00:00', 21, 2);
 
 -- --------------------------------------------------------
 
@@ -66,7 +74,10 @@ CREATE TABLE `feedback` (
 INSERT INTO `feedback` (`ID`, `SERVICE_ID`, `RATING`, `REVIEW`, `BOOKING_ID`) VALUES
 (3, 18, '4', 'sample feedback 1', 9),
 (4, 18, '5', 'sample feedback 2', 9),
-(5, 18, '1', 'sample feedback 4', 9);
+(5, 18, '1', 'sample feedback 4', 9),
+(6, 1, '3', 'amazing', 14),
+(7, 21, '5', 'shampoo bath was good', 17),
+(8, 21, '1', 'bad', 18);
 
 -- --------------------------------------------------------
 
@@ -88,14 +99,14 @@ CREATE TABLE `services` (
 --
 
 INSERT INTO `services` (`ID`, `NAME`, `PRICE`, `RATING`, `PICTURE`, `SERVICE_ACTIVE`) VALUES
-(1, 'nail trimming', 5, 0, 'cat_food.png', 1),
-(2, 'grooming', 10, 0, 'product_01.png', 1),
-(3, 'body wash', 5, 0, 'product_02.png', 1),
-(15, 'service with 2 slots', 44, 0, 'img167260555736897258963b1ef75b921c.jpg', 0),
-(16, 'proper service', 5.6, 0, 'img1672606439125109057663b1f2e72130e.jpg', 0),
-(17, 'proper service check slot times', 6, 0, 'img1672606638137063790863b1f3ae6e3a9.jpg', 0),
-(18, 'proper service check slot times', 6, 0, 'img1672606829134246999163b1f46da956a.jpg', 1),
-(19, 'check service active and remove', 43, 0, 'img167260787798996448063b1f88542f4a.png', 0);
+(1, 'Nail Trimming', 5, 0, 'cat_nail.webp', 1),
+(2, 'Pet Grooming', 10, 0, 'Pet_Grooming.png', 1),
+(3, 'Pet Shower', 5, 0, 'cat_shower.jpg', 1),
+(4, 'Pet Ear Cleaning', 5, 0, 'pet_ear_cleaning.png', 1),
+(5, 'Pet X-Ray', 15, 3, 'pet_xray.jpg', 1),
+(18, 'Dental Scaling', 4, 4.5, 'Dental_scaling.png', 1),
+(20, 'Pet Vaccine', 12.5, 0, 'img167263479087690364563b261a609e85.jpg', 1),
+(21, 'shampoo bath', 2.5, 0, 'img16726816702757808663b318c6e486d.jpg', 0);
 
 -- --------------------------------------------------------
 
@@ -135,20 +146,13 @@ INSERT INTO `services_slots` (`ID`, `SERVICES_ID`, `TIME_SLOT_START`, `TIME_SLOT
 (19, 3, '15:00:00', '16:00:00', 1, 1, 1, 0, 0),
 (20, 3, '16:00:00', '17:00:00', 1, 1, 0, 0, 0),
 (21, 3, '17:00:00', '18:00:00', 1, 0, 0, 1, 1),
-(31, 15, '11:00:00', '13:30:00', 1, 1, 1, 1, 0),
-(32, 15, '11:00:00', '13:30:00', 0, 1, 0, 1, 1),
-(33, 16, '15:00:00', '16:00:00', 1, 1, 1, 1, 1),
-(34, 16, '16:30:00', '17:30:00', 1, 1, 1, 0, 1),
-(35, 16, '16:30:00', '17:30:00', 1, 0, 1, 0, 1),
-(36, 17, '15:00:00', '16:00:00', 1, 1, 1, 1, 0),
-(37, 17, '16:30:00', '17:30:00', 1, 1, 1, 1, 0),
-(38, 17, '16:30:00', '17:30:00', 1, 0, 1, 1, 0),
 (39, 18, '12:30:00', '01:00:00', 1, 1, 1, 1, 0),
 (40, 18, '15:00:00', '16:00:00', 1, 1, 1, 1, 0),
 (41, 18, '16:30:00', '17:30:00', 1, 0, 1, 1, 0),
-(42, 19, '14:14:00', '11:45:00', 1, 0, 1, 0, 0),
-(43, 19, '15:00:00', '16:23:00', 1, 0, 1, 0, 1),
-(44, 19, '16:28:00', '17:00:00', 1, 0, 1, 1, 0);
+(45, 20, '09:45:00', '10:45:00', 0, 1, 0, 1, 0),
+(46, 21, '11:00:00', '12:00:00', 1, 1, 0, 1, 0),
+(47, 21, '12:30:00', '14:30:00', 1, 1, 1, 1, 0),
+(48, 21, '16:00:00', '17:00:00', 1, 1, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -172,9 +176,10 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`ID`, `NAME`, `EMAIL`, `PASSWORD`, `PHONE`, `TYPE`, `PROFILE_PIC`) VALUES
 (1, 'Admin', 'admin@petshop.com', 'Admin1', '38888888', 'admin', 'default.jpg'),
-(2, 'User1', 'user1@petshop.com', 'User1111', '33333333', 'customer', 'default.jpg'),
-(3, 'user two two two', 'user22@petshop.com', 'ultimate2U', '38888889', 'customer', 'picpc1672654396145349490063b2ae3c900f6.png'),
-(4, 'test user', 'testuser@petshop.com', 'Testuser1', '39393939', 'customer', 'default.jpg');
+(2, 'user one one', 'user11@petshop.com', 'User1111', '33333334', 'customer', 'picpfp21672682350201134506363b31b6eb9fa9.png'),
+(3, 'user two', 'user2@petshop.com', 'user2U', '38888888', 'customer', 'default.jpg'),
+(4, 'Ahmed', 'joyone1187@vpsrec.com', 'Ahmed1', '34455445', 'customer', 'default.jpg'),
+(5, 'tony stark', 'tonystark@avengers.com', 'aaaaaa1Q', '38393233', 'customer', 'default.jpg');
 
 --
 -- Indexes for dumped tables
@@ -225,31 +230,31 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `bookings`
 --
 ALTER TABLE `bookings`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `services`
 --
 ALTER TABLE `services`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `services_slots`
 --
 ALTER TABLE `services_slots`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables

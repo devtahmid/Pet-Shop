@@ -209,12 +209,14 @@ if (isset($create)) {
     var nameRegex = /^([a-z]{2,}\s)*[a-z]+$/i;
     if (nameRegex.test(name)) {
       document.getElementById("serviceName").style.color = "green";
-      document.getElementById("serviceName").innerHTML = "";
+      document.getElementById("serviceName").innerHTML = "valid name";
       ajaxexists(name);
+      nameFlag = true;
+
     } else {
       document.getElementById("serviceName").style.color = "red";
       document.getElementById("serviceName").innerHTML = "Service name can only be alphabetic and spaces, min 2 char long";
-      nameFlag = true;
+      nameFlag = false;
     }
   }
 
@@ -222,11 +224,12 @@ if (isset($create)) {
     var priceRegex = /^[0-9]+(\.[0-9]{1,1})?$/;
     if (priceRegex.test(price)) {
       document.getElementById("servicePrice").style.color = "green";
-      document.getElementById("servicePrice").innerHTML = "";
+      document.getElementById("servicePrice").innerHTML = "valid price";
+      priceFlag = true;
     } else {
       document.getElementById("servicePrice").style.color = "red";
       document.getElementById("servicePrice").innerHTML = "Price can only be numeric and max 1 decimal places";
-      priceFlag = true;
+      priceFlag = false;
     }
   }
 
