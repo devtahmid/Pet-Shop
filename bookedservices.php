@@ -67,9 +67,11 @@ try {
             echo "<td>" . $booking['BOOKING_DATE']  . "</td>";
             echo "<td>" . $slotRow['TIME_SLOT_START'] . " - " . $slotRow['TIME_SLOT_END'] . "</td>";
 
-            if (($booking['BOOKING_DATE'] <= date('Y-m-d') && ($slotRow['TIME_SLOT_END'] < date("h:i:s"))))
+            if (($booking['BOOKING_DATE'] < date('Y-m-d'))) {
               echo "<td> Received </td>";
-            else
+            } elseif (($booking['BOOKING_DATE'] == date('Y-m-d')) && ($slotRow['TIME_SLOT_END'] < date("h:i:s"))) {
+              echo "<td> Received </td>";
+            } else
               echo "<td> Upcoming </td>";
 
 

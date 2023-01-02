@@ -74,8 +74,8 @@ function addSlot(e) {
   chheckbox5label.htmlFor = currentSlotIndex + "#thursday";
   chheckbox5label.innerText = "Thursday";
 
-  var tabspace = document.createElement('span');
-  tabspace.innerHTML = "&emsp;";
+  var tabspace = document.createElement('div');
+  tabspace.innerHTML = "    ";
 
   divSlot.appendChild(labelStartTime);
   divSlot.appendChild(startTimeInput);

@@ -106,7 +106,7 @@ try {
               $serviceRow = $result3->fetch();
               echo "<tr>";
 
-              if (($booking['BOOKING_DATE'] <= date('Y-m-d') && ($slotRow['TIME_SLOT_END'] < date("h:i:s")))) {
+              if (($booking['BOOKING_DATE'] < date('Y-m-d')) || ($booking['BOOKING_DATE'] == date('Y-m-d')) && ($slotRow['TIME_SLOT_END'] < date("h:i:s"))) { //booking date passed away, before today OR date is today and time slot has passed away
 
                 $result4->bindParam(':bookingId', $booking['ID']);
                 $result4->execute();

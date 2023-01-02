@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 02, 2023 at 04:24 AM
+-- Generation Time: Jan 02, 2023 at 05:05 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -173,7 +173,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`ID`, `NAME`, `EMAIL`, `PASSWORD`, `PHONE`, `TYPE`, `PROFILE_PIC`) VALUES
 (1, 'Admin', 'admin@petshop.com', 'Admin1', '38888888', 'admin', 'default.jpg'),
 (2, 'User1', 'user1@petshop.com', 'User1111', '33333333', 'customer', 'default.jpg'),
-(3, 'user two', 'user2@petshop.com', 'user2U', '38888888', 'customer', 'default.jpg');
+(3, 'user two two two', 'user22@petshop.com', 'ultimate2U', '38888889', 'customer', 'picpc1672654396145349490063b2ae3c900f6.png'),
+(4, 'test user', 'testuser@petshop.com', 'Testuser1', '39393939', 'customer', 'default.jpg');
 
 --
 -- Indexes for dumped tables
@@ -248,7 +249,7 @@ ALTER TABLE `services_slots`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables

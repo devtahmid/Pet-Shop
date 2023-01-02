@@ -44,7 +44,7 @@
   <div class="container">
     <main class="form-signin w-100 m-auto">
       <div class="border border-secondary border-2 rounded">
-        <form onSubmit="return checkRegistrationInputs();" action='reg_login.php' method='post' class="m-4">
+        <form onSubmit="return checkRegistrationInputs();" id="registration_form" action='reg_login.php' method='post' class="m-4">
 
           <h1 class="h3 mb-3 fw-normal text-center">Sign up</h1>
 
@@ -56,7 +56,7 @@
           <div class="mb-2">
             <label for="exampleInputEmail1" class="form-label">Email address</label>
 
-            <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="name@petshop.com" onkeyup="checkMAIL(this.value)" size='20' required>
+            <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="name@petshop.com" onkeyup="checkMAIL(this.value, 'registrationemail')" size='20' required>
             <span id='mail_msg'></span>
 
           </div>

@@ -27,7 +27,7 @@
           <div class="mb-2">
             <label for="exampleInputEmail1" class="form-label">Email address</label>
 
-            <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="name@petshop.com" onkeyup="checkMAIL(this.value)" size='20' required>
+            <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="name@petshop.com" onchange="checkMAIL(this.value, 'loginemail')" size='20' required>
             <span id='mail_msg'></span>
 
           </div>
@@ -35,7 +35,7 @@
           <div class="mb-2">
             <label for="exampleInputPassword1" class="form-label">Password</label>
 
-            <input type="password" class="form-control" id="exampleInputPassword1" name='password' onkeyup="checkPWD(this.value,'login_pwd_msg')" required>
+            <input type="password" class="form-control" id="exampleInputPassword1" name='password' onchange="checkPWD(this.value,'login_pwd_msg')" required>
 
             <div id="login_pwd_msg" class="form-text">min 6 char, 1 uppercase, 1 lowercase, 1 number</div>
 

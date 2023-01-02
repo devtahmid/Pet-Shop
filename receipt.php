@@ -43,7 +43,7 @@ try {
 <body>
   <?php
   if ($_SESSION['userType'] == 'customer') {
-    /*  require('adminnavbar.php'); */
+    require('customernavbar.php');
   }
   ?>
   <br /><br /><br />

@@ -127,14 +127,15 @@ if (isset($create)) {
   <br /><br /><br />
   <section>
     <div class='container align-items-center font-weight-bold'>
-      <form method="POST" id="addServiceForm" enctype="multipart/form-data">
+      <form method="POST" id="addServiceForm" enctype="multipart/form-data" onSubmit="return checkeditedInputs();">
         <table class='table table-borderless'>
           <div class="form-group">
             <tr>
               <label class='col-form-label-lg'>
                 <h3>Name of the service:</h3>
               </label>
-              <input class="form-control" type='text' name='nop' required />
+              <input class="form-control" type='text' name='nop' onkeyup="checkName(this.value)" required />
+              <span id='serviceName'></span>
             </tr>
           </div>
 
@@ -143,7 +144,8 @@ if (isset($create)) {
               <label class='col-form-label-lg'>
                 <h3> Enter start price: </h3>
               </label>
-              <input class="form-control" type="number" name="sprice" step="0.1" min="0.1" required>
+              <input class="form-control" type="number" name="sprice" onkeyup="checkPrice(this.value)" step="0.1" min="0.1" required>
+              <span id='servicePrice'></span>
             </tr>
           </div>
 
@@ -190,6 +192,7 @@ if (isset($create)) {
         </div> <!-- end of div.slots -->
         <input type='button' id='addSlotButton' class="btn btn-outline-primary mb-2" value="Add Time Slot">
         <div class="form-group">
+          <input type='hidden' name='JSEnabled' value='false'>
           <input class='btn btn-secondary btn-lg btn-block' type='submit' name='create' value='Add' />
         </div>
       </form>
@@ -199,5 +202,85 @@ if (isset($create)) {
   <!-- attach script.js -->
   <script src="./addslots_addservice.js"></script>
 </body>
+<script>
+  var nameFlag = priceFlag = false;
+
+  function checkName(name) {
+    var nameRegex = /^([a-z]{2,}\s)*[a-z]+$/i;
+    if (nameRegex.test(name)) {
+      document.getElementById("serviceName").style.color = "green";
+      document.getElementById("serviceName").innerHTML = "";
+      ajaxexists(name);
+    } else {
+      document.getElementById("serviceName").style.color = "red";
+      document.getElementById("serviceName").innerHTML = "Service name can only be alphabetic and spaces, min 2 char long";
+      nameFlag = true;
+    }
+  }
+
+  function checkPrice(price) {
+    var priceRegex = /^[0-9]+(\.[0-9]{1,1})?$/;
+    if (priceRegex.test(price)) {
+      document.getElementById("servicePrice").style.color = "green";
+      document.getElementById("servicePrice").innerHTML = "";
+    } else {
+      document.getElementById("servicePrice").style.color = "red";
+      document.getElementById("servicePrice").innerHTML = "Price can only be numeric and max 1 decimal places";
+      priceFlag = true;
+    }
+  }
+
+
+
+  function GetXmlHttpObject() {
+    var xmlHttp = null;
+    try {
+      // Firefox, Opera 8.0+, Safari
+      xmlHttp = new XMLHttpRequest();
+    } catch (e) {
+      // Internet Explorer
+      try {
+        xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
+      } catch (e) {
+        xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+      }
+    }
+    return xmlHttp;
+  }
+
+  function ajaxexists(word) {
+    var xmlHttp = GetXmlHttpObject();
+    if (xmlHttp == null) {
+      alert("Your browser does not support AJAX!");
+      return false;
+    }
+
+    var url = "./checkServiceName.php"
+    url = url + "?name=" + word;
+
+    xmlHttp.onreadystatechange = function() {
+      if (xmlHttp.readyState == 4) {
+        ajax_checking = xmlHttp.responseText;
+        console.log(word + "---" + ajax_checking);
+        reGajaxmsgs(ajax_checking);
+      }
+    }
+    xmlHttp.open("GET", url, true);
+    xmlHttp.send(null);
+  }
+
+  function reGajaxmsgs(result) {
+    if (result == "present") {
+      document.getElementById('serviceName').style.color = "red";
+      document.getElementById('serviceName').innerHTML = "Service name already registered";
+      nameFlag = false;
+    }
+  }
+
+  function checkeditedInputs() {
+    document.getElementById('addServiceForm').JSEnabled.value = "TRUE";
+    return (nameFlag && priceFlag);
+  }
+</script>
 
 </html>
