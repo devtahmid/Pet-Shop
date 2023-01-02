@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+<nav class="navbar navbar-expand-md bg-body-tertiary fixed-top border border-dark-subtle border-top-0 border-end-0 border-start-0">
   <div class="container-fluid">
     <a class="navbar-brand" href="index.php">
       <img src="./assets/pet_logo1.png" alt="Logo" width="40" height="34" class="d-inline-block">
@@ -7,17 +7,19 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="browse.php">View Services</a>
+          <a class="nav-link" href="#about">About</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="addservice.php">Add Service</a>
+          <a class="nav-link" href="#services">Services</a>
         </li>
-      </ul>
-      <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="logout.php">Logout</a>
+          <a class="nav-link" href="login_form.php">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="registration_form.php">Signup</a>
         </li>
       </ul>
 

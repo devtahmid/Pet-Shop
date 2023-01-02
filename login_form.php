@@ -14,7 +14,15 @@
 
 <body>
   <?php
-  require('notloggedinnavbar.php');
+  session_start();
+  if (!isset($_SESSION['userType']))
+    require('notloggedinnavbar.php');
+  else if ($_SESSION['userType'] == 'admin')
+    require('adminnavbar.php');
+  else if ($_SESSION['userType'] == 'customer')
+    require('customernavbar.php');
+
+
   ?>
   <br /><br />
   <div class="container">
