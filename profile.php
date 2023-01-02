@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['userId']))
-  header('Location: ../login_form.php?error=1');
+  header('Location: login_form.php?error=1');
 $sid = $_SESSION['userId'];
 try {
   require('project_connection.php');
@@ -90,13 +90,13 @@ try {
 
               <div class="mb-2">
                 <label for="exampleInputPassword1" class="form-label">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" name='password' onkeyup="checkPWD(this.value)" required>
+                <input type="password" class="form-control" id="exampleInputPassword1" name='password' onkeyup="checkPWD(this.value)">
                 <div id="profile_pwd_msg" class="form-text">min 6 char, 1 uppercase, 1 lowercase, 1 number</div>
               </div>
 
               <div>
                 <label for="exampleInputPassword2" class="form-label">Confirm Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword2" name='cnfm_password' onkeyup="confirmPWD(this.value)" required>
+                <input type="password" class="form-control" id="exampleInputPassword2" name='cnfm_password' onkeyup="confirmPWD(this.value)">
                 <div id="cfmpwd_msg" class="form-text"></div>
               </div>
 
