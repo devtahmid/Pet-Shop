@@ -130,7 +130,7 @@ try {
           ?>
             <form method='get' action='removeService.php'>
               <input type='hidden' name='id' value='<?php echo $row["ID"]; ?>' />
-              <input type='submit' name='remove' class="btn btn-danger mt-3" value='Remove Item' />
+              <input type='submit' name='remove' class="btn btn-danger mt-3" value='Remove Service' />
             </form>
           <?php
           }

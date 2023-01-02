@@ -16,6 +16,7 @@
   <?php
   require('notloggedinnavbar.php');
   ?>
+  <br /><br />
   <div class="container">
     <main class="form-signin w-100 m-auto">
       <div class="border border-secondary border-2 rounded">
