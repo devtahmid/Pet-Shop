@@ -2,6 +2,7 @@
 require("project_connection.php");
 session_start();
 extract($_GET); //$id
+$feedbackrows;
 try {
   $sql1 = "SELECT * FROM services WHERE ID= :id";
   $result = $db->prepare($sql1);
@@ -12,6 +13,25 @@ try {
   $result2 = $db->prepare($sql2);
   $result2->bindParam(':id', $id);
   $result2->execute();
+
+  $sql3 = "SELECT * FROM feedback WHERE SERVICE_ID= :id";
+  $result3 = $db->prepare($sql3);
+  $result3->bindParam(':id', $id);
+  $result3->execute();
+  $feedbackrows = $result3->fetchAll();
+  $calculatedRating = 0;
+  $count = 0;
+
+  foreach ($feedbackrows as $feedbackrow) {
+    $calculatedRating += $feedbackrow['RATING'];
+    ++$count;
+  }
+  if ($count != 0)
+    $calculatedRating = $calculatedRating / $count;
+
+  $calculatedRating = round($calculatedRating, 1);
+
+
 
   $db = null;
 } catch (PDOException $e) {
@@ -33,11 +53,11 @@ try {
 
 <body>
   <?php
-  if ($_SESSION['userType'] == 'admin') {
+  if ($_SESSION['userType'] == 'admin')
     require('adminnavbar.php');
-  } /* else if(){
-}
- */
+  else if ($_SESSION['userType'] == 'customer')
+    require('customernavbar.php');
+
   ?>
 
   <br /><br /><br /><br />
@@ -62,7 +82,7 @@ try {
                 <b>Price:</b> BHD <?php echo  $row['PRICE']; ?>
               </div>
               <div class="col-xs-12">
-                <b>Rating:</b> <?php echo $row['RATING']; ?> / 5
+                <b>Rating:</b> <?php echo $calculatedRating; ?> / 5
               </div>
             </div>
           </div>
@@ -117,6 +137,18 @@ try {
           ?>
         </div>
     <?php
+      } // end of foreach  $result as $row
+    } //end of rowcount if statement
+    echo "<div class='text-center'>";
+    echo  "<h4 class='mt-4 mb-6'>Feedbacks:</h4>";
+
+    if (count($feedbackrows) > 0) {
+      foreach ($feedbackrows as $feedbackrow) {
+        echo "<h5>" . $feedbackrow['RATING'] . " / 5  -  <i>\"" . $feedbackrow['REVIEW'] . "\"</i></h5>";
       }
+    } else {
+
+      echo "<h5 class='card-title'>No feedbacks yet!</h5>";
     }
+    echo "</div>";
     ?>

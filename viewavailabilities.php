@@ -54,11 +54,9 @@ if (isset($check)) {
 
 <body>
   <?php
-  if ($_SESSION['userType'] == 'admin') {
+  if ($_SESSION['userType'] == 'customer') {
     require('adminnavbar.php');
-  } /* else if(){
-}
- */
+  }
   ?>
   <br /><br /><br />
 
@@ -127,7 +125,7 @@ When the loop ends but we did not find the timeslot in the bookingtable for that
               echo "<input type='hidden' name='id' value='" . $row["ID"] . "'/>";
               echo "<input type='hidden' name='date' value='" . $date . "'/>";
               echo "<input type='hidden' name='sid' value='" . $row["SERVICES_ID"] . "'/>";
-              echo "<input type='submit' class='btn btn-primary' name='book' value='Book timing'/>";
+              echo "<input type='submit' class='btn btn-primary btn-sm' name='book' value='Book timing'/>";
               echo "</form>";
               echo "</td>";
               echo "</tr>";
