@@ -45,23 +45,29 @@ if (isset($create)) {
   //inserting into services_slots table
   try {
     $db->beginTransaction();
-    $sql2 = "INSERT INTO services_slots (SERVICES_ID, TIME_SLOT_START, TIME_SLOT_END, SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY) VALUES (:SERVICES_ID, :TIME_SLOT_START, :TIME_SLOT_END, :SUNDAY, :MONDAY, :TUESDAY, :WEDNESDAY, :THURSDAY)";   //partially copilot
-    $preparedStatement2 = $db->prepare($sql2); //copilot
+    $sql2 = "INSERT INTO services_slots (SERVICES_ID, TIME_SLOT_START, TIME_SLOT_END, SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY) VALUES (:SERVICES_ID, :TIME_SLOT_START, :TIME_SLOT_END, :SUNDAY, :MONDAY, :TUESDAY, :WEDNESDAY, :THURSDAY)";
+    $preparedStatement2 = $db->prepare($sql2);
     $SUNDAY = $MONDAY = $TUESDAY = $WEDNESDAY = $THURSDAY = 0;
     $valueExploded = explode('#', $DAY[0]);
-    $index = $valueExploded[0]; //copilot
-
+    /* take index of the first DAY */
+    $index = $valueExploded[0];
+    /* find out day of week of the first DAY */
     if ($valueExploded[1] == 'SUNDAY')
       $SUNDAY = 1;
     else if ($valueExploded[1] == 'MONDAY')
-      $MONDAY = 1; //copilot
-    else if ($valueExploded[1] == 'TUESDAY') //copilot
-      $TUESDAY = 1; //copilot
-    else if ($valueExploded[1] == 'WEDNESDAY') //copilot
-      $WEDNESDAY = 1;  //copilot
-    else if ($valueExploded[1] == 'THURSDAY') //copilot
-      $THURSDAY = 1;  //copilot
-
+      $MONDAY = 1;
+    else if ($valueExploded[1] == 'TUESDAY')
+      $TUESDAY = 1;
+    else if ($valueExploded[1] == 'WEDNESDAY')
+      $WEDNESDAY = 1;
+    else if ($valueExploded[1] == 'THURSDAY')
+      $THURSDAY = 1;
+    /*
+for the subsequent DAYs, if the index is the same as the previous DAY, then just update the day of week
+if the index is different, then insert the values of each day variable ($SUNDAY, $MONDAY, etc.) ino the db.
+Therefore after the weeeks's days are inserted, we go for the next week. but it happens automatically becausebased on the index, because each group of checkbox (representing the week for that time slot) gets a unique index.
+Next, reset the day variables to 0 for the next set of days.
+*/
     foreach ($DAY as $value) {
       $valueExploded = explode("#", $value);
       if ($valueExploded[0] != $index) {
@@ -88,6 +94,7 @@ if (isset($create)) {
     $timeStart = $TIME[((int)$index - 1) * 2];
     $timeEnd = $TIME[(((int)$index - 1) * 2) + 1];
     echo "<br/>, last one, timeslot start and end initialised, about to insert";
+    /* after the last DAY[] initiliases a day variable($SUNDAY, or $MONDAY, etc ) it does not get inserted into the db because it does not enter the loop again, hence does not get checked in the first if statement in the loop. so we'll need to insert the days of the week one last time, seperately */
     $preparedStatement2->execute(['SERVICES_ID' => $insertId, 'TIME_SLOT_START' => $timeStart, 'TIME_SLOT_END' => $timeEnd, 'SUNDAY' => $SUNDAY, 'MONDAY' => $MONDAY, 'TUESDAY' => $TUESDAY, 'WEDNESDAY' => $WEDNESDAY, 'THURSDAY' => $THURSDAY]);
     echo "<br/>, last one, inserted and executed, insert id is " . $db->lastInsertId();
     $SUNDAY = $MONDAY = $TUESDAY = $WEDNESDAY = $THURSDAY = 0;
