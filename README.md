@@ -4,7 +4,7 @@
 ![PHP](https://img.shields.io/badge/php-%23777BB4.svg?style=for-the-badge&logo=php&logoColor=white)
 ![MariaDB](https://img.shields.io/badge/MariaDB-003545?style=for-the-badge&logo=mariadb&logoColor=white)  
 Online shop portal for a pet shop with access for customer, and admin(shop owner).  
-Demo website: http://pharmams.epizy.com  
+Demo website: http://petprism.epizy.com  
 
 ### Website Functionalities:
 1. For customer  
