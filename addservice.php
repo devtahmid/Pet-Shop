@@ -213,10 +213,10 @@ Next, reset the day variables to 0 for the next set of days.
   var nameFlag = priceFlag = false;
 
   function checkName(name) {
-    var nameRegex = /^([a-z]{2,}\s)*[a-z]+$/i;
+    var nameRegex = /^([a-z]{2,}\s)*[a-z]{2,}$/i;
     if (nameRegex.test(name)) {
       document.getElementById("serviceName").style.color = "green";
-      document.getElementById("serviceName").innerHTML = "valid name";
+      document.getElementById("serviceName").innerHTML = "valid service name";
       ajaxexists(name);
       nameFlag = true;
 

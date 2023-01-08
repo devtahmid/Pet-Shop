@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+<nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top border border-dark-subtle border-top-0 border-end-0 border-start-0">
   <div class="container-fluid">
     <a class="navbar-brand" href="index.php">
       <img src="./assets/pet_logo1.png" alt="Logo" width="40" height="34" class="d-inline-block">

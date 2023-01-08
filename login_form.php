@@ -51,6 +51,31 @@
 
           <input type='hidden' name='JSEnabled' value='false'>
           <button class="w-100 btn btn-lg btn-primary" type='submit' name='login_user'>Sign in</button>
+          <!-- Modal button -->
+          <button class="w-100 btn btn-lg btn-info mt-1" data-bs-toggle="modal" data-bs-target="#exampleModal">Sample Credentials</button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">Sample Credentials</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  Email: admin@petshop.com </br>
+                  Password: Admin1</br>
+                  <hr>
+                  Email: sam11@petshop.com </br>
+                  Password: Sam1234
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
 
           <p class="mt-1">Dont have an account? <br /> <b><a href="registration_form.php">Sign up here!</a></b> </p>
         </form>

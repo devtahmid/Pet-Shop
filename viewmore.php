@@ -87,7 +87,7 @@ try {
             </div>
           </div>
         </div>
-        <h4 class="mt-3 mb-2"> Working hours (Check availabilitites to book a time):-</h4>
+        <h4 class="mt-3 mb-2"> Working hours <?php if ($_SESSION['userType'] == 'customer') echo "(Check availabilitites to book a time)"; ?>:-</h4>
         <div class="table-responsive">
           <table class="table table-bordered">
             <thead>
