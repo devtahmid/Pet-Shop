@@ -9,10 +9,10 @@ extract($_GET);
 try {
 
   if (isset($search))
-    $sql = "SELECT * FROM SERVICES WHERE NAME LIKE '%$search%' AND SERVICE_ACTIVE = 1";
+    $sql = "SELECT * FROM services WHERE NAME LIKE '%$search%' AND SERVICE_ACTIVE = 1";
 
   else
-    $sql = "SELECT * FROM SERVICES WHERE SERVICE_ACTIVE = 1";
+    $sql = "SELECT * FROM services WHERE SERVICE_ACTIVE = 1";
 
   $result = $db->query($sql);
 
