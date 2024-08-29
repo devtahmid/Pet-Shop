@@ -194,7 +194,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`ID`, `NAME`, `EMAIL`, `PASSWORD`, `PHONE`, `TYPE`, `PROFILE_PIC`) VALUES
 (1, 'Admin', 'admin@petshop.com', 'Admin1', '38888888', 'admin', 'default.jpg'),
-(2, 'Sam', 'sam11@petshop.com', 'Sam1234', '33333334', 'customer', 'picpfp21672682350201134506363b31b6eb9fa9.png'),
+(2, 'Sam', 'ahmed@gmail.com', 'Frankfurt1', '33333334', 'customer', 'picpfp21672682350201134506363b31b6eb9fa9.png'),
 (3, 'user two', 'user2@petshop.com', 'user2U', '38888888', 'customer', 'default.jpg'),
 (4, 'Ahmed', 'ahmed87@gmail.com', 'Ahmed1', '34455445', 'customer', 'default.jpg'),
 (5, 'tony stark', 'tonystark@avengers.com', 'aaaaaa1Q', '38393233', 'customer', 'default.jpg'),
