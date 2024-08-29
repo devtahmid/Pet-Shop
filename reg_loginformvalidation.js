@@ -178,5 +178,7 @@ function checkRegistrationInputs() {
 
 function checkLoginInputs() {
   document.forms[0].JSEnabled.value = "TRUE";
+  checkMAIL(document.getElementById('exampleInputEmail1').value, 'loginemail');
+  checkPWD(document.getElementById('exampleInputPassword1').value, 'login_pwd_msg');
   return (emailFlag && passwordFlag);
 }
