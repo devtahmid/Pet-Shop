@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 02, 2023 at 07:39 PM
+-- Generation Time: Jan 08, 2023 at 05:48 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -31,7 +31,6 @@ CREATE TABLE `bookings` (
   `ID` int(11) NOT NULL,
   `SERVICES_SLOTS_ID` int(11) NOT NULL,
   `BOOKING_DATE` date NOT NULL,
-  `BOOKING_DATETIME` datetime NOT NULL,
   `SERVICES_ID` int(11) DEFAULT NULL,
   `USER_ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -40,18 +39,21 @@ CREATE TABLE `bookings` (
 -- Dumping data for table `bookings`
 --
 
-INSERT INTO `bookings` (`ID`, `SERVICES_SLOTS_ID`, `BOOKING_DATE`, `BOOKING_DATETIME`, `SERVICES_ID`, `USER_ID`) VALUES
-(1, 16, '2023-01-05', '0000-00-00 00:00:00', 2, 2),
-(9, 39, '2023-01-01', '0000-00-00 00:00:00', 18, 2),
-(10, 19, '2023-01-09', '0000-00-00 00:00:00', 3, 2),
-(11, 40, '2023-01-03', '0000-00-00 00:00:00', 18, 4),
-(12, 1, '2023-01-04', '0000-00-00 00:00:00', 1, 4),
-(13, 18, '2023-01-05', '0000-00-00 00:00:00', 3, 4),
-(14, 3, '2022-12-29', '0000-00-00 00:00:00', 1, 4),
-(15, 2, '2022-12-28', '0000-00-00 00:00:00', 1, 4),
-(16, 14, '2022-11-23', '0000-00-00 00:00:00', 2, 4),
-(17, 47, '2023-01-01', '0000-00-00 00:00:00', 21, 5),
-(18, 47, '2023-01-01', '0000-00-00 00:00:00', 21, 2);
+INSERT INTO `bookings` (`ID`, `SERVICES_SLOTS_ID`, `BOOKING_DATE`, `SERVICES_ID`, `USER_ID`) VALUES
+(1, 16, '2023-01-05', 2, 2),
+(9, 39, '2023-01-01', 18, 2),
+(10, 19, '2025-01-09', 3, 2),
+(11, 40, '2023-01-03', 18, 4),
+(12, 1, '2023-01-04', 1, 4),
+(13, 18, '2023-01-05', 3, 4),
+(14, 3, '2022-12-29', 1, 4),
+(15, 2, '2022-12-28', 1, 4),
+(16, 14, '2022-11-23', 2, 4),
+(17, 47, '2023-01-01', 21, 5),
+(18, 47, '2023-01-01', 21, 2),
+(19, 14, '2023-01-07', 2, 7),
+(20, 19, '2022-01-09', 3, 2),
+(21, 3, '2022-12-29', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -77,7 +79,8 @@ INSERT INTO `feedback` (`ID`, `SERVICE_ID`, `RATING`, `REVIEW`, `BOOKING_ID`) VA
 (5, 18, '1', 'sample feedback 4', 9),
 (6, 1, '3', 'amazing', 14),
 (7, 21, '5', 'shampoo bath was good', 17),
-(8, 21, '1', 'bad', 18);
+(8, 21, '1', 'bad', 18),
+(9, 2, '4', 'excellent service', 19);
 
 -- --------------------------------------------------------
 
@@ -105,8 +108,9 @@ INSERT INTO `services` (`ID`, `NAME`, `PRICE`, `RATING`, `PICTURE`, `SERVICE_ACT
 (4, 'Pet Ear Cleaning', 5, 0, 'pet_ear_cleaning.png', 1),
 (5, 'Pet X-Ray', 15, 3, 'pet_xray.jpg', 1),
 (18, 'Dental Scaling', 4, 4.5, 'Dental_scaling.png', 1),
-(20, 'Pet Vaccine', 12.5, 0, 'img167263479087690364563b261a609e85.jpg', 1),
-(21, 'shampoo bath', 2.5, 0, 'img16726816702757808663b318c6e486d.jpg', 0);
+(20, 'Pet Vaccine (abandoned)', 12.5, 0, 'img167263479087690364563b261a609e85.jpg', 0),
+(21, 'shampoo bath', 2.5, 0, 'img16726816702757808663b318c6e486d.jpg', 0),
+(23, 'Pet vaccine', 12.5, 0, 'img1673173246134271539763ba98fe72d9e.jpg', 0);
 
 -- --------------------------------------------------------
 
@@ -152,7 +156,21 @@ INSERT INTO `services_slots` (`ID`, `SERVICES_ID`, `TIME_SLOT_START`, `TIME_SLOT
 (45, 20, '09:45:00', '10:45:00', 0, 1, 0, 1, 0),
 (46, 21, '11:00:00', '12:00:00', 1, 1, 0, 1, 0),
 (47, 21, '12:30:00', '14:30:00', 1, 1, 1, 1, 0),
-(48, 21, '16:00:00', '17:00:00', 1, 1, 0, 0, 0);
+(48, 21, '16:00:00', '17:00:00', 1, 1, 0, 0, 0),
+(50, 4, '10:00:00', '10:20:00', 1, 0, 1, 0, 1),
+(51, 4, '10:30:00', '10:50:00', 1, 0, 1, 0, 1),
+(52, 4, '17:00:00', '17:20:00', 1, 0, 1, 0, 1),
+(53, 4, '17:30:00', '17:50:00', 1, 0, 1, 0, 1),
+(54, 4, '13:00:00', '13:20:00', 0, 1, 0, 1, 0),
+(55, 4, '13:30:00', '14:00:00', 0, 1, 0, 1, 0),
+(56, 5, '11:00:00', '11:20:00', 1, 0, 1, 0, 1),
+(57, 5, '10:30:00', '10:50:00', 1, 0, 1, 0, 1),
+(58, 5, '18:00:00', '18:20:00', 1, 0, 1, 0, 1),
+(59, 5, '18:30:00', '18:50:00', 1, 0, 1, 0, 1),
+(60, 5, '14:00:00', '14:20:00', 0, 1, 0, 1, 0),
+(61, 5, '14:30:00', '14:00:00', 0, 1, 0, 1, 0),
+(62, 23, '14:30:00', '14:50:00', 0, 1, 0, 1, 0),
+(63, 23, '15:00:00', '15:20:00', 0, 1, 0, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -176,10 +194,12 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`ID`, `NAME`, `EMAIL`, `PASSWORD`, `PHONE`, `TYPE`, `PROFILE_PIC`) VALUES
 (1, 'Admin', 'admin@petshop.com', 'Admin1', '38888888', 'admin', 'default.jpg'),
-(2, 'user one one', 'user11@petshop.com', 'User1111', '33333334', 'customer', 'picpfp21672682350201134506363b31b6eb9fa9.png'),
+(2, 'Sam', 'sam11@petshop.com', 'Sam1234', '33333334', 'customer', 'picpfp21672682350201134506363b31b6eb9fa9.png'),
 (3, 'user two', 'user2@petshop.com', 'user2U', '38888888', 'customer', 'default.jpg'),
-(4, 'Ahmed', 'joyone1187@vpsrec.com', 'Ahmed1', '34455445', 'customer', 'default.jpg'),
-(5, 'tony stark', 'tonystark@avengers.com', 'aaaaaa1Q', '38393233', 'customer', 'default.jpg');
+(4, 'Ahmed', 'ahmed87@gmail.com', 'Ahmed1', '34455445', 'customer', 'default.jpg'),
+(5, 'tony stark', 'tonystark@avengers.com', 'aaaaaa1Q', '38393233', 'customer', 'default.jpg'),
+(6, 'Max', 'max12@gmail.com', 'Max123', '34234354', 'customer', 'default.jpg'),
+(7, 'Pet owner', 'petowner34@gmail.com', 'Petowner44', '33445522', 'customer', 'picpfp 31673172671131004907263ba96bfd19a8.jpg');
 
 --
 -- Indexes for dumped tables
@@ -230,31 +250,31 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `bookings`
 --
 ALTER TABLE `bookings`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `services`
 --
 ALTER TABLE `services`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `services_slots`
 --
 ALTER TABLE `services_slots`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables
