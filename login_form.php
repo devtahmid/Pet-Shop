@@ -66,8 +66,8 @@
                   Email: admin@petshop.com </br>
                   Password: Admin1</br>
                   <hr>
-                  Email: joyone1187@vpsrec.com </br>
-                  Password: Ahmed1
+                  Email: ahmed@gmail.com </br>
+                  Password: Frankfurt1
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
